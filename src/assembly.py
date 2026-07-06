@@ -13,14 +13,13 @@ release, act. The lenses serve the work; the work does not serve the lenses.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
 from .hierarchy import (
     LENS_BY_ID,
     LENSES_BY_CATEGORY,
-    LENSES_BY_STRATUM,
     LensCategory,
     Stratum,
     SystemHouse,
@@ -80,7 +79,7 @@ class AssemblyResult:
             "task": self.task_description,
             "stratum": self.identified_stratum.value,
             "category": self.identified_category.value,
-            "lenses": [l.lens_id for l in self.summoned_lenses],
+            "lenses": [lens.lens_id for lens in self.summoned_lenses],
             "insights": [
                 {"lens": i.lens_id, "adds": i.adds, "strips": i.strips,
                  "demands": i.demands, "critique": i.critique}
